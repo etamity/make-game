@@ -3,6 +3,11 @@
 
 Make Game is an experimental project let people make games and learn coding with simple drag & drop blocks.
 
+### Screenshots
+![Blockly Make Games](https://raw.githubusercontent.com/etamity/make-game/master/screenshot/screen1.png)
+
+![Demo Project List](https://raw.githubusercontent.com/etamity/make-game/master/screenshot/screen2.png)
+
 ### Setup
 
 ##### Prerequisites
@@ -32,11 +37,7 @@ routing for the app:
 This command performs HTML, CSS, and JS minification on the application
 dependencies.
 
-The minified files are output to the `www` folder, and are suitable
-for serving from a HTTP/2+Push compatible server.
-
-In addition the command also creates a fallback `www` folder,
-generated using fragment bundling, suitable for serving from non
-H2/push-compatible servers or to clients that do not support H2/Push.
-
     gulp build
+
+### Demo
+http://makegame.s3-website-eu-west-1.amazonaws.com
