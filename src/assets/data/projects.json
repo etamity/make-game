@@ -1,0 +1,64 @@
+{
+	 "projects": [{
+        "title": "Blank",
+        "description": "A blank template",
+        "jsfile": "scripts/games/blank/blank.js",
+        "assets": "complete",
+        "mode": "game",
+        "preview": "assets/images/projects/blank.png"
+    }, {
+        "title": "Particles Blockly",
+        "description": "A simple particles effect",
+        "jsfile": "scripts/games/particles/particles.js",
+        "xml": "scripts/games/particles/particles.xml",
+        "assets": "complete",
+        "mode": "game",
+        "preview": "assets/images/projects/particles.png"
+    },{
+        "title": "Bricker Blockly",
+        "description": "A simple bricker game",
+        "jsfile": "scripts/games/bricker/code.js",
+        "xml": "scripts/games/bricker/bricker.xml",
+        "assets": "complete",
+        "mode": "game",
+        "preview": "assets/images/projects/bricker_blockly.png"
+    },{
+        "title": "Music Game Blockly",
+        "description": "A simple music game",
+        "jsfile": "scripts/games/musicgame/music.js",
+        "xml": "scripts/games/musicgame/music.xml",
+        "assets": "pack3",
+        "mode": "game",
+        "preview": "assets/images/projects/music.png"
+    },
+    {
+        "title": "Mobile Bricker",
+        "description": "A simple bricker game",
+        "jsfile": "scripts/games/bricker/bricker.js",
+        "assets": "complete",
+        "mode": "game",
+        "preview": "assets/images/projects/bricker.png"
+    }, {
+        "title": "Aircraft",
+        "description": "A simple aircraft game",
+        "jsfile": "scripts/games/aircraft/aircraft.js",
+        "assets": "pack1",
+        "mode": "game",
+        "preview": "assets/images/projects/shooter.png"
+    }, {
+        "title": "Platform",
+        "description": "A simple Platform game",
+        "jsfile": "scripts/games/example/example.js",
+        "xml": "scripts/games/example/example.xml ",
+        "assets": "pack4",
+        "mode": "game",
+        "preview": "assets/images/projects/platform.png"
+    }, {
+        "title": "Tank",
+        "description": "A simple tank game",
+        "jsfile": "scripts/games/tank/tank.js",
+        "assets": "pack2",
+        "mode": "template",
+        "preview": "assets/images/projects/tank.png"
+    }]
+}

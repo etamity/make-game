@@ -1,0 +1,69 @@
+<!--
+  Customize the blocks that you want to appear in the CodeIt! interface here.
+  See https://developers.google.com/blockly/installation/toolbox
+-->
+<link rel="import" href="../bower_components/polymer/polymer.html">
+<link rel="import" href="../bower_components/paper-icon-button/paper-icon-button.html">
+<link rel="import" href="../bower_components/iron-icons/av-icons.html">
+<link rel="import" href="../shared-styles.html">
+<dom-module id="kg-toolbar">
+    <template>
+        <style>
+        :host {
+            display: block;
+        }
+        </style>
+        <div class="card flex-horizontal">
+            <paper-icon-button id="playButton" class="flex" icon="[[_icon]]" on-tap="playOnTap" title="play"></paper-icon-button>
+            <paper-icon-button id="replayButton" class="flex" icon="av:replay" on-tap="replayOnTap" title="replay"></paper-icon-button>
+            <paper-icon-button id="fullscreenButton" class="flex" icon="av:web-asset" on-tap="fullscreenOnTap" title="fullscreen"></paper-icon-button>
+            <paper-icon-button id="clearButton" class="flex" icon="av:not-interested" on-tap="clearOnTap" title="fullscreen"></paper-icon-button>
+        </div>
+    </template>
+    <script>
+    Polymer({
+        is: 'kg-toolbar',
+        properties: {
+            running: {
+                type: Boolean,
+                value: false,
+                observer: '_stateChanged'
+            },
+            _icon: {
+                type: String,
+                value: "av:play-arrow"
+            },
+            fullscreen: {
+                type: Boolean,
+                value: false
+            }
+        },
+        _stateChanged(running) {
+            var icon = running === true ? "av:pause" : "av:play-arrow";
+            this._icon = icon;
+        },
+        clearOnTap() {
+            this.fire("clear-event");
+        },
+        fullscreenOnTap() {
+            this.fire("fullscreen-event", {
+                data: this.fullscreen
+            });
+            this.fullscreen = !this.fullscreen;
+        },
+        replayOnTap() {
+            this.fire("replay-event", {
+                data: this.running
+            });
+            this.running = false;
+        },
+        playOnTap() {
+            this.fire("play-event", {
+                data: this.running
+            });
+            this.running = !this.running;
+        },
+        attached() {}
+    });
+    </script>
+</dom-module>

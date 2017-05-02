@@ -1,0 +1,99 @@
+<!--
+@license
+Copyright (c) 2016 The Polymer Project Authors. All rights reserved.
+This code may only be used under the BSD style license found at http://polymer.github.io/LICENSE.txt
+The complete set of authors may be found at http://polymer.github.io/AUTHORS.txt
+The complete set of contributors may be found at http://polymer.github.io/CONTRIBUTORS.txt
+Code distributed by Google as part of the polymer project is also
+subject to an additional IP rights grant found at http://polymer.github.io/PATENTS.txt
+-->
+<link rel="import" href="bower_components/polymer/polymer.html">
+<link rel="import" href="bower_components/app-layout/app-toolbar/app-toolbar.html">
+<link rel="import" href="bower_components/app-route/app-location.html">
+<link rel="import" href="bower_components/app-route/app-route.html">
+<link rel="import" href="bower_components/neon-animation/animations/fade-in-animation.html">
+<link rel="import" href="bower_components/neon-animation/animations/fade-out-animation.html">
+<link rel="import" href="bower_components/iron-lazy-pages/iron-lazy-pages.html">
+<link rel="import" href="bower_components/iron-lazy-pages/neon-lazy-pages.html">
+<link rel="import" href="bower_components/paper-spinner/paper-spinner.html">
+<link rel="import" href="bower_components/iron-selector/iron-selector.html">
+<link rel="import" href="bower_components/paper-icon-button/paper-icon-button.html">
+<link rel="import" href="kg-icons.html">
+<script src="scripts/workspace/kg-storage.js"></script>
+<dom-module id="kg-app">
+    <template>
+        <style>
+        :host {
+            --app-primary-color: #4285f4;
+            --app-secondary-color: black;
+            display: block;
+        }
+        paper-spinner {
+            position: absolute;
+            margin: 0 auto;
+        }
+        .center {
+            margin: auto;
+            position: absolute;
+            top: 0; 
+            left: 0;
+            bottom: 0; 
+            right: 0;
+         }
+        </style>
+        <app-location route="{{route}}"></app-location>
+        <app-route route="{{route}}" pattern="/:page" data="{{routeData}}" tail="{{subroute}}"></app-route>
+        <neon-lazy-pages attr-for-selected="name" 
+        selected="{{page}}" 
+        loading="{{loading}}" 
+        entry-animation="fade-in-animation" 
+        exit-animation="fade-out-animation" 
+        fallback-selection="view404" 
+        restamp>
+            <template is="iron-lazy-page" name="game" path="kg-game.html">
+                <kg-game route="{{subroute}}"></kg-game>
+            </template>
+            <template is="iron-lazy-page" name="projects" path="kg-projects.html">
+                <kg-projects route="{{subroute}}" on-goto="gotoPage"></kg-projects>
+            </template>
+            <template is="iron-lazy-page" name="player" path="kg-player.html">
+                <kg-player route="{{subroute}}"></kg-player>
+            </template>
+            <template is="iron-lazy-page" name="view404" path="kg-view404.html">
+                <view404 route="{{subroute}}"></view404>
+            </template>
+        </neon-lazy-pages>
+        <paper-spinner class="center" active="[[loading]]"></paper-spinner>
+    </template>
+    <script>
+    Polymer({
+        is: 'kg-app',
+        properties: {
+            page: {
+                type: String,
+                reflectToAttribute: true,
+                value: 'projects'
+            },
+            loading: {
+                type: Boolean,
+                notify: true
+            }
+        },
+        observers: [
+            '_routePageChanged(routeData.page)'
+        ],
+        attached () {
+            this.loading = false;
+            this.storage = window.Realm.Game.Storage;
+        },
+        _routePageChanged(page) {
+            this.page = page || 'projects';
+        },
+        gotoPage(e) {
+            this.page = e.detail.page;
+            this.storage.setProjectConfig(JSON.stringify(e.detail.data));
+            this.set('route.path', this.page);
+        }
+    });
+    </script>
+</dom-module>

@@ -1,0 +1,46 @@
+{
+    "pack": [{
+        "type": "atlasXML",
+        "key": "pack2",
+        "textureURL": "assets/images/game/pack2/sheet_tanks.png",
+        "atlasURL": "assets/images/game/pack2/sheet_tanks.xml",
+        "atlasData": null
+    },{
+        "type": "atlasXML",
+        "key": "pack3",
+        "textureURL": "assets/images/game/pack3/puzzleAssets_sheet.png",
+        "atlasURL": "assets/images/game/pack3/puzzleAssets_sheet.xml",
+        "atlasData": null
+    }, {
+        "type": "image",
+        "key": "bg_colored_castle",
+        "url": "assets/images/game/backgrounds/colored_castle.png",
+        "overwrite": false
+    }, {
+        "type": "audio",
+        "key": "Cheerful_Annoyance",
+        "urls": "assets/audios/musics/Cheerful_Annoyance.mp3",
+        "autoDecode": true
+    }, {
+        "type": "audio",
+        "key": "music_Game_Over",
+        "urls": "assets/audios/musics/Game_Over.mp3",
+        "autoDecode": true
+    }, {
+        "type": "audio",
+        "key": "German_Virtue",
+        "urls": "assets/audios/musics/German_Virtue.mp3",
+        "autoDecode": true
+    }, {
+        "type": "audio",
+        "key": "Italian_Mom",
+        "urls": "assets/audios/musics/Italian_Mom.mp3",
+        "autoDecode": true
+    }, {
+        "type": "audio",
+        "key": "Sad_Town",
+        "urls": "assets/audios/musics/Sad_Town.mp3",
+        "autoDecode": true
+    }]
+
+}

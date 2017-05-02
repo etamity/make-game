@@ -1,0 +1,141 @@
+<link rel="import" href="../bower_components/polymer/polymer.html">
+<link rel="import" href="../bower_components/iron-flex-layout/iron-flex-layout.html">
+<link rel="import" href="../bower_components/iron-image/iron-image.html">
+
+
+<!--
+    @demo demo/index.html
+-->
+<dom-module id="kg-project-card">
+    <template>
+        <style>
+            :host {
+                @apply --layout-vertical;
+                width: 300px;
+                height: 266px;
+                box-shadow: 0 2px 0 0 rgba(0,0,0,0.06);
+                border-radius: 3px;
+                background-color: white;
+                overflow: hidden;
+                transform: translateZ(0);
+                margin: 20px;
+            }
+            :host a {
+                @apply --layout-vertical;
+                height: 100%;
+                text-decoration: none;
+            }
+            :host(.centered) {
+                @apply --layout-center-justified;
+            }
+            .title, .card-content {
+                color: #5a5a5a;
+                margin: 0;
+                padding: 0px 25px;
+                text-decoration: none;
+            }
+            .title {
+                font-size: 18px;
+                font-weight: bold;
+                @apply --kw-project-card-heading;
+            }
+            .cover, .cover > iron-image {
+                display: flex;
+                @apply --layout-center-justified;
+                @apply --layout-center;
+                z-index: 0;
+                width: 100%;
+                height: 190px;
+                background-color: inherit;
+            }
+            .cover {
+                position: relative;
+            }
+            .info {
+                @apply --layout-vertical;
+                @apply --layout-start;
+                @apply --layout-center-justified;
+                flex: 1;
+                min-height: 40px;
+                position: relative;
+            }
+            .button-wrapper {
+                @apply --layout-vertical;
+                @apply --layout-fit;
+                @apply --layout-center-justified;
+                @apply --layout-center;
+            }
+            .action-btn {
+                background-color: rgba(255,255,255,0.7);
+                padding: 11px 23px 10px;
+                font-family: var(--font-body);
+                font-size: 18px;
+                font-weight: 600;
+                border-radius: 50px;
+                border: 0;
+                color: #5a5a5a;
+                transition: all linear 200ms;
+                cursor: pointer;
+            }
+            :host a:hover .action-btn {
+                background-color: #62b22a;
+                border-color: #62b22a;
+                color: white;
+            }
+            .star {
+                width: 44px;
+                height: 44px;
+                position: absolute;
+                top: 50%;
+                right: 18px;
+                margin-top: -22px;
+                display: none;
+                transform: translateZ(0) scale(0);
+                @apply --kw-project-card-star
+            }
+            [hidden] {
+                display: none !important;
+            }
+            @media screen and (max-width: 680px) {
+                :host {
+                    width: 285px;
+                    height: 253px;
+                }
+            }
+        </style>
+        <a>
+        <div class="cover">
+        <!-- Here a hidden attribute would be more fitting, but a bug on Safari 9 crashes the app if the image doesn't have a src -->
+                <template is="dom-if" if="[[project.preview]]">
+                    <iron-image src="[[project.preview]]" sizing="cover" preload fade>
+                    </iron-image>
+                </template>
+                <div class="button-wrapper">
+                    <div type="button" class="action-btn">[[project.title]]</div>
+                </div>
+        </div>
+        <div class="cafe-rating">
+            <iron-icon class="star" icon="star"></iron-icon>
+            <iron-icon class="star" icon="star"></iron-icon>
+            <iron-icon class="star" icon="star"></iron-icon>
+            <iron-icon class="star" icon="star"></iron-icon>
+            <iron-icon class="star" icon="star"></iron-icon>
+        </div>
+        <div class="info">
+            <h4 class="title" id="title">[[project.description]]</h4>
+        </div>
+        </a>
+    </template>
+    <script>
+        Polymer({
+            is: 'kg-project-card',
+            properties: {
+                project: {
+                    type: Object,
+                    value: null
+                }
+            }
+
+        });
+    </script>
+</dom-module>

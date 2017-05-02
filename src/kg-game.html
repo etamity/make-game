@@ -1,0 +1,213 @@
+<link rel="import" href="bower_components/polymer/polymer.html">
+<link rel="import" href="elements/elements.html">
+<link rel="import" href="shared-styles.html">
+<dom-module id="kg-game">
+    <template>
+        <style include="shared-styles">
+        :host {
+            display: block;
+        }
+        paper-tabs paper-tab {
+            color: white;
+            background: #99ccff;
+            background-opacity: 0.2
+        }
+        paper-tabs paper-tab.iron-selected {
+            background: #ffffcc;
+            border-radius: 3px;
+            color: black;
+        }
+        .container {
+            display: flex;
+        }
+        .editor {
+            height: 90vh;
+            width: 100%;
+        }
+        #gameview {
+            position: relative;
+            width: 100%;
+            height: 480px;
+            display: block
+        }
+        #assets {
+            overflow-y: scroll;
+            height: 90vh;
+        }
+        </style>
+        <div class="container layout horizontal">
+            <div class="flex half">
+                <div class="block">
+                    <paper-tabs selected="{{selected}}">
+                        <paper-tab>
+                            Block
+                        </paper-tab>
+                        <paper-tab>
+                            Code
+                        </paper-tab>
+                        <paper-tab>
+                            XML
+                        </paper-tab>
+                        <paper-tab>
+                            ASSETS
+                        </paper-tab>
+                    </paper-tabs>
+                </div>
+                <div class="block">
+                    <iron-pages selected="{{selected}}">
+                        <kg-blockly id="blockly" on-code-event="codeEvent" on-ready="_blocklyReady"></kg-blockly>
+                        <juicy-ace-editor id="editor" class="editor" class="full-height" theme="ace/theme/twilight" maxlines=60 value="[[code]]" mode="ace/mode/javascript" wrapmode></juicy-ace-editor>
+                        <juicy-ace-editor id="xml" class="editor" value="[[xmlText]]" wrapmode></juicy-ace-editor>
+                    </iron-pages>
+                </div>
+            </div>
+            <div class="flex half">
+                <div class="block">
+                    <kg-toolbar class="toobar" on-play-event="playEvent" on-replay-event="replayEvent" on-fullscreen-event="fullscreenEvent" on-clear-event="clearEvent"></kg-toolbar>
+                </div>
+                <div class="block">
+                    <div id="gameview"></div>
+                </div>
+            </div>
+        </div>
+    </template>
+    <script>
+    Polymer({
+        is: 'kg-game',
+        properties: {
+            selected: {
+                type: Number,
+                value: 0
+            },
+            code: {
+                type: String
+            },
+            codeRunning: {
+                type: Boolean,
+                value: false
+            },
+            config: {
+                type: Object
+            },
+            xmlText: {
+                type: String,
+                notify: true
+            }
+        },
+        init () {
+            Polymer.dom.flush();
+            var height = this.$.gameview.offsetHeight;
+            var width = this.$.gameview.offsetWidth;
+
+            var game = this.game = new Phaser.Game(width, height, Phaser.AUTO, this.$.gameview);
+            this.$.editor.$blockScrolling = Infinity;
+            var manager = new Realm.Game.Manager(game);
+
+            var VM = this.VM = new Realm.VM();
+            VM.addModule("game", game);
+            window.addEventListener('resize', () => {
+                Polymer.dom.flush();
+                height = this.$.gameview.offsetHeight;
+                width = this.$.gameview.offsetWidth;
+                game.width = width;
+                game.height = height;
+                if (game.renderType === Phaser.WEBGL) {
+                    game.renderer.resize(width, height);
+                }
+            }, false);
+
+            this.storage = window.Realm.Game.Storage;
+            this.storage.setVariable('game', game);
+            this.xmlText = this.storage.getBlocklyXML();
+        },
+        attached () {
+            this.bindEvents();
+            this.init();
+        },
+        _blocklyReady (){
+            this.config = JSON.parse(this.storage.getProjectConfig());
+            if (this.config) {
+                this.loadConfig();
+            } else {
+                if (this.xmlText){
+                    this.loadXml(this.xmlText); 
+                }
+            }
+        },
+        loadXml(xml) {
+            var xml = Blockly.Xml.textToDom(xml);
+            Blockly.Xml.domToWorkspace(xml,this.$.blockly.workspace);
+            this.code = Blockly.JavaScript.workspaceToCode(this.$.blockly.workspace) || '';
+        },
+        loadConfig() {
+            this.assets = new Realm.Game.Assets();
+            this.assets.load(this.config, (js, xml, url) => {
+                this.game.load.onLoadComplete.addOnce(() => {
+                this.assets.attach();
+                if (this.xmlText && this.xmlText !=='<xml xmlns="http://www.w3.org/1999/xhtml"></xml>'){
+                    this.loadXml(this.xmlText); 
+                } else {
+                    this.loadXml(xml);
+                }
+            }, this);
+                var scene = new Realm.Game.Scene(url);
+                scene.onCreate = () => {
+                    //this.VM.run(this.code);
+                    //this.game.enableStep();
+                }
+                this.VM.addCode(js);
+                this.game.state.add('kg-scene', scene);
+                this.game.state.start('kg-scene');
+            });
+        },
+
+        codeEvent (e, data) {
+            this.code = data.data;
+            this.xmlText = this.storage.getBlocklyXML();
+        },
+        playEvent (e, data) {
+            var myCode = this.code;
+            var running = data.data;
+            this.game.sound.stopAll()
+            if (!this.codeRunning && !running) {
+                this.VM.run(this.code);
+                this.game.paused = false;
+                this.game.disableStep();
+            } else {
+                this.game.paused = running;
+            }
+        },
+        replayEvent (e, data) {
+            this.game.sound.stopAll()
+            this.game.state.clearCurrentState();
+            this.game.state.restart(true);
+            this.codeRunning = false;
+            this.VM.run(this.code);
+            this.game.enableStep();
+        },
+        fullscreenEvent (e, data) {
+            if (this.game.scale.isFullScreen) {
+                this.game.scale.stopFullScreen();
+            } else {
+                this.game.scale.startFullScreen(false);
+            }
+        },
+        clearEvent (e,data) {
+            //this.storage.removeBlocklyXML();
+            this.code = '';
+            if (Blockly.mainWorkspace !== null) {
+                Blockly.mainWorkspace.clear();
+            }
+        },
+        bindEvents () {
+            var self = this;
+            this.$.editor.addEventListener('change',  (e) => {
+                self.code = self.$.editor.value;
+                this.codeRunning = false;
+            });
+        }
+    });
+    </script>
+</dom-module>
+<script>
+</script>

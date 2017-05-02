@@ -1,0 +1,128 @@
+{
+    "pack": [{
+        "type": "image",
+        "key": "bg_colored_castle",
+        "url": "assets/images/game/backgrounds/colored_castle.png",
+        "overwrite": false
+    }, {
+        "type": "image",
+        "key": "bg_colored_desert",
+        "url": "assets/images/game/backgrounds/colored_desert.png",
+        "overwrite": false
+    }, {
+        "type": "image",
+        "key": "bg_colored_forest",
+        "url": "assets/images/game/backgrounds/colored_forest.png",
+        "overwrite": false
+    }, {
+        "type": "image",
+        "key": "bg_colored_talltrees",
+        "url": "assets/images/game/backgrounds/colored_talltrees.png",
+        "overwrite": false
+    },{
+        "type": "atlasXML",
+        "key": "spritesheet_aliens",
+        "textureURL": "assets/images/game/pack4/spritesheet_aliens.png",
+        "atlasURL": "assets/images/game/pack4/spritesheet_aliens.xml",
+        "atlasData": null
+    },{
+        "type": "atlasXML",
+        "key": "spritesheet_debris",
+        "textureURL": "assets/images/game/pack4/spritesheet_debris.png",
+        "atlasURL": "assets/images/game/pack4/spritesheet_debris.xml",
+        "atlasData": null
+    },{
+        "type": "atlasXML",
+        "key": "spritesheet_elements",
+        "textureURL": "assets/images/game/pack4/spritesheet_elements.png",
+        "atlasURL": "assets/images/game/pack4/spritesheet_elements.xml",
+        "atlasData": null
+    },{
+        "type": "atlasXML",
+        "key": "spritesheet_explosive",
+        "textureURL": "assets/images/game/pack4/spritesheet_explosive.png",
+        "atlasURL": "assets/images/game/pack4/spritesheet_explosive.xml",
+        "atlasData": null
+    },{
+        "type": "atlasXML",
+        "key": "spritesheet_glass",
+        "textureURL": "assets/images/game/pack4/spritesheet_glass.png",
+        "atlasURL": "assets/images/game/pack4/spritesheet_glass.xml",
+        "atlasData": null
+    },{
+        "type": "atlasXML",
+        "key": "spritesheet_metal",
+        "textureURL": "assets/images/game/pack4/spritesheet_metal.png",
+        "atlasURL": "assets/images/game/pack4/spritesheet_metal.xml",
+        "atlasData": null
+    },{
+        "type": "atlasXML",
+        "key": "spritesheet_stone",
+        "textureURL": "assets/images/game/pack4/spritesheet_stone.png",
+        "atlasURL": "assets/images/game/pack4/spritesheet_stone.xml",
+        "atlasData": null
+    },{
+        "type": "atlasXML",
+        "key": "spritesheet_tiles",
+        "textureURL": "assets/images/game/pack4/spritesheet_tiles.png",
+        "atlasURL": "assets/images/game/pack4/spritesheet_tiles.xml",
+        "atlasData": null
+    },{
+        "type": "atlasXML",
+        "key": "spritesheet_wood",
+        "textureURL": "assets/images/game/pack4/spritesheet_wood.png",
+        "atlasURL": "assets/images/game/pack4/spritesheet_wood.xml",
+        "atlasData": null
+    }, {
+        "type": "image",
+        "key": "bg_colored_castle",
+        "url": "assets/images/game/backgrounds/colored_castle.png",
+        "overwrite": false
+    }, {
+        "type": "audio",
+        "key": "Cheerful_Annoyance",
+        "urls": "assets/audios/musics/Cheerful_Annoyance.mp3",
+        "autoDecode": true
+    }, {
+        "type": "audio",
+        "key": "music_Game_Over",
+        "urls": "assets/audios/musics/Game_Over.mp3",
+        "autoDecode": true
+    }, {
+        "type": "audio",
+        "key": "German_Virtue",
+        "urls": "assets/audios/musics/German_Virtue.mp3",
+        "autoDecode": true
+    }, {
+        "type": "audio",
+        "key": "Italian_Mom",
+        "urls": "assets/audios/musics/Italian_Mom.mp3",
+        "autoDecode": true
+    }, {
+        "type": "audio",
+        "key": "Sad_Town",
+        "urls": "assets/audios/musics/Sad_Town.mp3",
+        "autoDecode": true
+    }, {
+        "type": "audio",
+        "key": "gameover3",
+        "urls": "assets/audios/effects/gameover3.mp3",
+        "autoDecode": true
+    }, {
+        "type": "audio",
+        "key": "hurt2",
+        "urls": "assets/audios/effects/hurt2.mp3",
+        "autoDecode": true
+    }, {
+        "type": "audio",
+        "key": "hit3",
+        "urls": "assets/audios/effects/hit3.mp3",
+        "autoDecode": true
+    }, {
+        "type": "audio",
+        "key": "coin5",
+        "urls": "assets/audios/effects/coin5.mp3",
+        "autoDecode": true
+    }]
+
+}

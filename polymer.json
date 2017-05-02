@@ -1,0 +1,18 @@
+{
+  "fragments": [
+
+  ],
+  "sources": [
+   "src/**",
+   "src/**/*",
+   "src/scripts/**/*",
+   "src/images/**/*",
+   "src/assets/**/*",
+   "src/elements/**/*"
+  ],
+  "extraDependencies": [
+    "bower.json",
+    "manifest.json",
+    "src/bower_components/webcomponentsjs/webcomponents-lite.min.js"
+  ]
+}

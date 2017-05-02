@@ -1,0 +1,130 @@
+<link rel="import" href="../bower_components/polymer/polymer.html">
+<link rel="import" href="../bower_components/iron-flex-layout/iron-flex-layout.html">
+<link rel="import" href="../bower_components/neon-animation/animations/scale-up-animation.html">
+<link rel="import" href="../bower_components/neon-animation/animations/fade-out-animation.html">
+<link rel="import" href="../bower_components/iron-a11y-keys/iron-a11y-keys.html">
+<link rel="import" href="../shared-styles.html">
+<link rel="import" href="kg-toolbox.html">
+<dom-module id="kg-blockly">
+    <template>
+        <style include="shared-styles">
+        :host {
+            display: block;
+        }
+        
+        #blocklyDiv {
+            height: 90vh;
+        }
+        
+        rect.blocklyMainBackground,
+        ::slotted(* rect.blocklyMainBackground) {
+            opacity: 0 !important;
+        }
+        </style>
+        <div id="blocklyArea">
+            <div id="blocklyDiv"></div>
+            <kg-toolbox id="toolboxElement"> </kg-toolbox>
+        </div>
+        <iron-signals on-iron-signal-play-event="playEvent"></iron-signals>
+    </template>
+    <script>
+    Polymer({
+        is: 'kg-blockly',
+        properties: {
+            xmlText: {
+                type: String,
+                value: ''
+
+            }
+        },
+        attached() {
+            this.storage = window.Realm.Game.Storage;
+            var blocklyDiv = this.$.blocklyDiv;
+            var toolbox = this.$.toolboxElement.$.toolbox;
+            setTimeout(() => {
+                var workspace = this.workspace = Blockly.inject(blocklyDiv, {
+                        media: '../bower_components/google-blockly/media/',
+                        scrollbars: true,
+                        toolbox: toolbox,
+                        zoom: {
+                            controls: true
+                        },
+                        grid: {
+                            spacing: 20,
+                            length: 3
+                        },
+                        trashcan: true
+                });
+                this.workspace.addChangeListener(this.onBlocklyChange.bind(this));
+                var updateCode = () => {
+                    var code = Blockly.JavaScript.workspaceToCode(workspace);
+                    this.code = code;
+                    this.fire("code-event", {
+                        data: code
+                    });
+
+                };
+                workspace.addChangeListener(updateCode);
+                workspace.addChangeListener(() => {
+                    this.onProgramChange.bind(this);
+                    this.onProgramChange();
+                });
+                document.body.style.overflow = 'hidden';
+                var blocklyArea = this.$.blocklyArea;
+                var onresize = (e) => {
+                    // Compute the absolute coordinates and dimensions of blocklyArea.
+                    var element = blocklyArea;
+                    var x = 0;
+                    var y = 0;
+                    do {
+                        x += element.offsetLeft;
+                        y += element.offsetTop;
+                        element = element.offsetParent;
+                    } while (element);
+                };
+                window.addEventListener('resize', onresize);
+                onresize();
+                Blockly.svgResize(this.workspace);
+                this.fire('ready');
+            }, 0);
+
+        },
+        onProgramChange() {
+            var workspace = Blockly.getMainWorkspace();
+            var xml = Blockly.Xml.workspaceToDom(workspace);
+            var xmlText = Blockly.Xml.domToText(xml);
+            this.storage.setBlocklyXML(xmlText);
+        },
+        onBlocklyChange(e) {
+            if (e.type === Blockly.Events.CREATE) {
+                this.lastCreated = e.blockId;
+            }
+            // If there is a move event or a click event, we check if it matches the last block created
+            if ((e.type === Blockly.Events.MOVE || e.type === Blockly.Events.UI && e.element === 'click') &&
+                this.lastCreated === e.blockId) {
+                // The block targetted by the last event matches the last created,
+                //  we trigger a drop event
+                var ev = {
+                    type: Blockly.Events.DROP_BLOCK,
+                    blockId: e.blockId
+                };
+                this.workspace.fireChangeListener(ev);
+                this.lastCreated = null;
+            }
+            this.fire('change', e);
+        },
+
+        /**
+         * Triggers the resize event on the window
+         */
+        resize() {
+            var ev = new Event('resize');
+            window.dispatchEvent(ev);
+            if (!this.workspace) {
+                return;
+            }
+            Blockly.resizeSvgContents(this.workspace);
+        }
+    });
+    </script>
+</dom-module>

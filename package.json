@@ -1,0 +1,47 @@
+{
+  "name": "make-game",
+  "version": "1.0.8",
+  "description": "https://github.com/etamity",
+  "scripts": {
+    "lint": "eslint . --ext js,html --ignore-path .gitignore",
+    "test": "npm run lint && polymer test",
+    "start": "polymer serve | npm run watch",
+    "watch": "browser-sync start --proxy localhost:8080 --files 'src/*.html, src/**/*, src/*.js, assets/**/*' "
+  },
+  "license": "http://polymer.github.io/LICENSE.txt",
+  "bugs": {
+    "url": "https://github.com/jay8t6/generator-polymer-init-custom-build-es6/issues"
+  },
+  "engines": {
+    "node": ">=4.0"
+  },
+  "private": true,
+  "devDependencies": {
+    "babel-plugin-array-includes": "^2.0.3",
+    "babel-plugin-transform-es2015-shorthand-properties": "^6.22.0",
+    "babel-preset-babili": "0.0.11",
+    "babel-preset-es2015-script": "^1.1.0",
+    "babili": "0.0.11",
+    "browser-sync": "^2.18.7",
+    "del": "^2.2.1",
+    "gulp": "gulpjs/gulp#4.0",
+    "gulp-babel": "^6.1.2",
+    "gulp-babel-minify": "^0.1.12",
+    "gulp-clean-css": "^2.0.12",
+    "gulp-htmlmin": "^3.0.0",
+    "gulp-if": "^2.0.1",
+    "gulp-uglify": "^2.0.1",
+    "merge-stream": "^1.0.0",
+    "plylog": "^0.4.0",
+    "polymer-build": "^0.4.0"
+  },
+  "dependencies": {
+    "babel-preset-es2015": "^6.22.0",
+    "gulp-html-minifier": "^0.1.8",
+    "gulp-imagemin": "^3.1.1",
+    "gulp-logger": "0.0.2",
+    "gulp-uglifyjs": "^0.6.2",
+    "run-sequence": "^1.2.2",
+    "uglify-js": "^2.7.5"
+  }
+}

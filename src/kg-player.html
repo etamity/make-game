@@ -1,0 +1,61 @@
+<link rel="import" href="bower_components/polymer/polymer.html">
+<link rel="import" href="elements/elements.html">
+<dom-module id="kg-player">
+    <template>
+        <style>
+        :host {
+            display: block;
+
+        }
+        #gameview {
+            width: 100%;
+            height: 100%;
+            position: absolute;
+            background: black;
+        }
+
+        </style>
+        <div id="gameview"></div>
+    </template>
+    <script>
+    Polymer({
+        is: 'kg-player',
+        properties: {
+            config: {
+                type: Object
+            }
+        },
+        attached() {
+            this.storage = window.Realm.Game.Storage;
+            this.config = JSON.parse(this.storage.getProjectConfig());
+            if (!this.config) {
+                return;
+            }
+            Polymer.dom.flush();
+            var height = this.$.gameview.offsetHeight;
+            var width = this.$.gameview.offsetWidth; 
+            var game = this.game = new Phaser.Game(width, height, Phaser.AUTO, this.$.gameview);
+            var VM = this.VM = new Realm.VM();
+            VM.addModule("game", game);
+            this.assets = new Realm.Game.Assets();
+            this.assets.load(this.config, (js, xml, url) => {
+                this.game.load.onLoadComplete.addOnce(() => {
+                    this.assets.attach();
+                });
+                var scene = new Realm.Game.Scene(url);
+                scene.onCreate = () => {
+                    this.VM.run(this.code);
+                    //window.Realm.Game.Utils.toggleFullScreen();
+                    //this.game.scale.startFullScreen(false);
+                    //window.scrollTo(0,1);
+                }
+                this.VM.addCode(js);
+                this.game.state.add('kg-scene', scene);
+                this.game.state.start('kg-scene');
+            });
+        }
+    });
+    </script>
+</dom-module>
+<script>
+</script>

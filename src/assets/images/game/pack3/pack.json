@@ -1,0 +1,204 @@
+{
+    "pack": [{
+        "type": "atlasXML",
+        "key": "pack3",
+        "textureURL": "assets/images/game/pack3/puzzleAssets_sheet.png",
+        "atlasURL": "assets/images/game/pack3/puzzleAssets_sheet.xml",
+        "atlasData": null
+    }, {
+        "type": "image",
+        "key": "bg_colored_forest",
+        "url": "assets/images/game/backgrounds/colored_forest.png",
+        "overwrite": false
+    }, {
+        "type": "image",
+        "key": "bg_colored_talltrees",
+        "url": "assets/images/game/backgrounds/colored_talltrees.png",
+        "overwrite": false
+    },{
+        "type": "atlasXML",
+        "key": "spritesheet_balls",
+        "textureURL": "assets/images/game/pack3/spritesheet_balls.png",
+        "atlasURL": "assets/images/game/pack3/spritesheet_balls.xml",
+        "atlasData": null
+    },{
+        "type": "atlasXML",
+        "key": "spritesheet_backtiles",
+        "textureURL": "assets/images/game/pack3/spritesheet_backtiles.png",
+        "atlasURL": "assets/images/game/pack3/spritesheet_backtiles.xml",
+        "atlasData": null
+    },{
+        "type": "atlasXML",
+        "key": "spritesheet_coins",
+        "textureURL": "assets/images/game/pack3/spritesheet_coins.png",
+        "atlasURL": "assets/images/game/pack3/spritesheet_coins.xml",
+        "atlasData": null
+    },{
+        "type": "atlasXML",
+        "key": "spritesheet_paddles",
+        "textureURL": "assets/images/game/pack3/spritesheet_paddles.png",
+        "atlasURL": "assets/images/game/pack3/spritesheet_paddles.xml",
+        "atlasData": null
+    },{
+        "type": "atlasXML",
+        "key": "spritesheet_particles",
+        "textureURL": "assets/images/game/pack3/spritesheet_particles.png",
+        "atlasURL": "assets/images/game/pack3/spritesheet_particles.xml",
+        "atlasData": null
+    },{
+        "type": "atlasXML",
+        "key": "spritesheet_pipes",
+        "textureURL": "assets/images/game/pack3/spritesheet_pipes.png",
+        "atlasURL": "assets/images/game/pack3/spritesheet_pipes.xml",
+        "atlasData": null
+    },{
+        "type": "atlasXML",
+        "key": "spritesheet_tilesBlack",
+        "textureURL": "assets/images/game/pack3/spritesheet_tilesBlack.png",
+        "atlasURL": "assets/images/game/pack3/spritesheet_tilesBlack.xml",
+        "atlasData": null
+    },{
+        "type": "atlasXML",
+        "key": "spritesheet_tilesBlue",
+        "textureURL": "assets/images/game/pack3/spritesheet_tilesBlue.png",
+        "atlasURL": "assets/images/game/pack3/spritesheet_tilesBlue.xml",
+        "atlasData": null
+    },{
+        "type": "atlasXML",
+        "key": "spritesheet_tilesGreen",
+        "textureURL": "assets/images/game/pack3/spritesheet_tilesGreen.png",
+        "atlasURL": "assets/images/game/pack3/spritesheet_tilesGreen.xml",
+        "atlasData": null
+    },{
+        "type": "atlasXML",
+        "key": "spritesheet_tilesGrey",
+        "textureURL": "assets/images/game/pack3/spritesheet_tilesGrey.png",
+        "atlasURL": "assets/images/game/pack3/spritesheet_tilesGrey.xml",
+        "atlasData": null
+    },{
+        "type": "atlasXML",
+        "key": "spritesheet_tilesOranges",
+        "textureURL": "assets/images/game/pack3/spritesheet_tilesOranges.png",
+        "atlasURL": "assets/images/game/pack3/spritesheet_tilesOranges.xml",
+        "atlasData": null
+    },{
+        "type": "atlasXML",
+        "key": "spritesheet_tilesPink",
+        "textureURL": "assets/images/game/pack3/spritesheet_tilesPink.png",
+        "atlasURL": "assets/images/game/pack3/spritesheet_tilesPink.xml",
+        "atlasData": null
+    },{
+        "type": "atlasXML",
+        "key": "spritesheet_tilesRed",
+        "textureURL": "assets/images/game/pack3/spritesheet_tilesRed.png",
+        "atlasURL": "assets/images/game/pack3/spritesheet_tilesRed.xml",
+        "atlasData": null
+    },{
+        "type": "atlasXML",
+        "key": "spritesheet_tilesYellow",
+        "textureURL": "assets/images/game/pack3/spritesheet_tilesYellow.png",
+        "atlasURL": "assets/images/game/pack3/spritesheet_tilesYellow.xml",
+        "atlasData": null
+    },{
+        "type": "audio",
+        "key": "12_String_Dream_02",
+        "urls": "assets/audios/loops/12_String_Dream_02.mp3",
+        "autoDecode": true
+    }, {
+        "type": "audio",
+        "key": "12_String_Dream_05",
+        "urls": "assets/audios/loops/12_String_Dream_05.mp3",
+        "autoDecode": true
+    }, {
+        "type": "audio",
+        "key": "12_String_Dream_06",
+        "urls": "assets/audios/loops/12_String_Dream_06.mp3",
+        "autoDecode": true
+    }, {
+        "type": "audio",
+        "key": "12_String_Dream_07",
+        "urls": "assets/audios/loops/12_String_Dream_07.mp3",
+        "autoDecode": true
+    }, {
+        "type": "audio",
+        "key": "Against_Time_Sax_Sample",
+        "urls": "assets/audios/loops/Against_Time_Sax_Sample.mp3",
+        "autoDecode": true
+    }, {
+        "type": "audio",
+        "key": "Brazilian_Guitar_03",
+        "urls": "assets/audios/loops/Brazilian_Guitar_03.mp3",
+        "autoDecode": true
+    }, {
+        "type": "audio",
+        "key": "Brooklyn_Nights_Synth",
+        "urls": "assets/audios/loops/Brooklyn_Nights_Synth.mp3",
+        "autoDecode": true
+    }, {
+        "type": "audio",
+        "key": "Caution_Beat",
+        "urls": "assets/audios/loops/Caution_Beat.mp3",
+        "autoDecode": true
+    }, {
+        "type": "audio",
+        "key": "Choral_Tension_Strings",
+        "urls": "assets/audios/loops/Choral_Tension_Strings.mp3",
+        "autoDecode": true
+    }, {
+        "type": "audio",
+        "key": "Classic_Rock_Piano_13",
+        "urls": "assets/audios/loops/Classic_Rock_Piano_13.mp3",
+        "autoDecode": true
+    }, {
+        "type": "audio",
+        "key": "Classic_Rock_Steel_05",
+        "urls": "assets/audios/loops/Classic_Rock_Steel_05.mp3",
+        "autoDecode": true
+    }, {
+        "type": "audio",
+        "key": "Demur_All",
+        "urls": "assets/audios/loops/Demur_All.mp3",
+        "autoDecode": true
+    }, {
+        "type": "audio",
+        "key": "French_Horn_Solo_25",
+        "urls": "assets/audios/loops/French_Horn_Solo_25.mp3",
+        "autoDecode": true
+    }, {
+        "type": "audio",
+        "key": "Hoist_Strings",
+        "urls": "assets/audios/loops/Hoist_Strings.mp3",
+        "autoDecode": true
+    }, {
+        "type": "audio",
+        "key": "Klezmer_Bend_Horn_04",
+        "urls": "assets/audios/loops/Klezmer_Bend_Horn_04.mp3",
+        "autoDecode": true
+    }, {
+        "type": "audio",
+        "key": "Klezmer_Bend_Horn_07",
+        "urls": "assets/audios/loops/Klezmer_Bend_Horn_07.mp3",
+        "autoDecode": true
+    }, {
+        "type": "audio",
+        "key": "Orchestrated_Chaos_Topper",
+        "urls": "assets/audios/loops/Orchestrated_Chaos_Topper.mp3",
+        "autoDecode": true
+    }, {
+        "type": "audio",
+        "key": "Plastic_Melody_Bass",
+        "urls": "assets/audios/loops/Plastic_Melody_Bass.mp3",
+        "autoDecode": true
+    }, {
+        "type": "audio",
+        "key": "Remix_Guitar_FX_04.2",
+        "urls": "assets/audios/loops/Remix_Guitar_FX_04.mp3",
+        "autoDecode": true
+    }, {
+        "type": "audio",
+        "key": "Titanic_Dub_Beat.2",
+        "urls": "assets/audios/loops/Titanic_Dub_Beat.mp3",
+        "autoDecode": true
+    }]
+
+}

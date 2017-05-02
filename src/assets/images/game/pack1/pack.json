@@ -1,0 +1,45 @@
+{
+    "pack": [{
+        "type": "atlasXML",
+        "key": "pack1",
+        "textureURL": "assets/images/game/pack1/Spritesheet/spritesheet_complete.png",
+        "atlasURL": "assets/images/game/pack1/Spritesheet/spritesheet_complete.xml",
+        "atlasData": null
+    }, {
+        "type": "image",
+        "key": "bg_colored_forest",
+        "url": "assets/images/game/backgrounds/colored_forest.png",
+        "overwrite": false
+    }, {
+        "type": "image",
+        "key": "bg_colored_talltrees",
+        "url": "assets/images/game/backgrounds/colored_talltrees.png",
+        "overwrite": false
+    }, {
+        "type": "audio",
+        "key": "Cheerful_Annoyance",
+        "urls": "assets/audios/musics/Cheerful_Annoyance.mp3",
+        "autoDecode": true
+    }, {
+        "type": "audio",
+        "key": "Game_Over",
+        "urls": "assets/audios/musics/Game_Over.mp3",
+        "autoDecode": true
+    }, {
+        "type": "audio",
+        "key": "German_Virtue",
+        "urls": "assets/audios/musics/German_Virtue.mp3",
+        "autoDecode": true
+    }, {
+        "type": "audio",
+        "key": "Italian_Mom",
+        "urls": "assets/audios/musics/Italian_Mom.mp3",
+        "autoDecode": true
+    }, {
+        "type": "audio",
+        "key": "Sad_Town",
+        "urls": "assets/audios/musics/Sad_Town.mp3",
+        "autoDecode": true
+    }]
+
+}
